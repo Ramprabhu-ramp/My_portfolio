@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@vercel/analytics/next";
+import { prisma } from "@/lib/prisma";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,10 +14,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Your Name — Portfolio",
-  description: "Frontend & full-stack developer portfolio.",
-};
+// Pulled from the database so the browser tab title always matches
+// whatever name/tagline is set in /admin — no manual editing needed here.
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const profile = await prisma.profile.findUnique({ where: { id: 1 } });
+    if (!profile) throw new Error("No profile");
+    return {
+      title: `${profile.name} — Portfolio`,
+      description: profile.tagline,
+    };
+  } catch {
+    return {
+      title: "Portfolio",
+      description: "Frontend & full-stack developer portfolio.",
+    };
+  }
+}
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
