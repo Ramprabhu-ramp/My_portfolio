@@ -1,12 +1,17 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import type { SocialLink } from "@/lib/types";
 
 function revalidateAll() {
   revalidatePath("/");
   revalidatePath("/admin");
+  revalidatePath("/admin/profile");
+  revalidatePath("/admin/skills");
+  revalidatePath("/admin/projects");
+  revalidatePath("/admin/experience");
 }
 
 // ---------- Profile ----------
@@ -38,7 +43,7 @@ export async function updateProfile(formData: FormData) {
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),
       resumeUrl: String(formData.get("resumeUrl") ?? "") || null,
-      socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")),
+      socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")) as unknown as Prisma.InputJsonValue,
     },
     create: {
       id: 1,
@@ -48,7 +53,7 @@ export async function updateProfile(formData: FormData) {
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),
       resumeUrl: String(formData.get("resumeUrl") ?? "") || null,
-      socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")),
+      socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")) as unknown as Prisma.InputJsonValue,
     },
   });
 

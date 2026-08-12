@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, type Prisma } from "@prisma/client";
 import { placeholderContent } from "../src/lib/placeholder-data";
 
 const prisma = new PrismaClient();
@@ -17,7 +17,7 @@ async function main() {
       location: profile.location,
       email: profile.email,
       resumeUrl: profile.resumeUrl || null,
-      socialLinks: profile.socialLinks,
+      socialLinks: profile.socialLinks as unknown as Prisma.InputJsonValue,
     },
   });
 

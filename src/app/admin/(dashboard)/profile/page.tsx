@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import type { SocialLink } from "@/lib/types";
 import { updateProfile } from "../actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProfileAdminPage() {
   const profile = await prisma.profile.findUnique({ where: { id: 1 } });
   const socialLinks = (profile?.socialLinks as unknown as SocialLink[]) ?? [];

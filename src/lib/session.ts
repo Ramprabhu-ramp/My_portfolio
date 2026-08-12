@@ -61,7 +61,12 @@ export async function verifySessionToken(token: string | undefined | null): Prom
 
   try {
     const key = await getKey();
-    return await crypto.subtle.verify("HMAC", key, fromBase64Url(sig), encoder.encode(payload));
+    return await crypto.subtle.verify(
+      "HMAC",
+      key,
+      fromBase64Url(sig) as BufferSource,
+      encoder.encode(payload) as BufferSource
+    );
   } catch {
     return false;
   }

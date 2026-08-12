@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { createSkillGroup, deleteSkillGroup, updateSkillGroup } from "../actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function SkillsAdminPage() {
   const groups = await prisma.skillGroup.findMany({ orderBy: { order: "asc" } });
 
