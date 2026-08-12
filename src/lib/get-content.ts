@@ -27,6 +27,8 @@ export async function getContent(): Promise<PortfolioContent> {
       location: profile.location,
       email: profile.email,
       resumeUrl: profile.resumeUrl ?? undefined,
+      contactHeadline: profile.contactHeadline ?? undefined,
+      contactMessage: profile.contactMessage ?? undefined,
       socialLinks: (profile.socialLinks as unknown as SocialLink[]) ?? [],
     },
     skillGroups: skillGroups.map((g) => ({

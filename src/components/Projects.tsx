@@ -6,7 +6,7 @@ export function Projects({ projects }: { projects: Project[] }) {
 
   return (
     <section id="projects" className="mx-auto max-w-4xl px-6 py-16">
-      <SectionHeading number="03" title="Projects" />
+      <SectionHeading number="02" title="Projects" />
       <div className="grid gap-6 sm:grid-cols-2">
         {sorted.map((project) => (
           <article

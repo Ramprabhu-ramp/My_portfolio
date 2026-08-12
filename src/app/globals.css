@@ -21,7 +21,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: #0c0a09;
     --foreground: #f4f4f5;
     --muted: #a1a1aa;
@@ -29,6 +29,16 @@
     --accent: #fb923c;
     --surface: #17151480;
   }
+}
+
+/* Explicit override from the theme toggle wins regardless of system setting. */
+:root[data-theme="dark"] {
+  --background: #0c0a09;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --accent: #fb923c;
+  --surface: #17151480;
 }
 
 body {

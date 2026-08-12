@@ -20,6 +20,8 @@ export interface Profile {
   location: string;
   email: string;
   resumeUrl?: string;
+  contactHeadline?: string;
+  contactMessage?: string;
   socialLinks: SocialLink[];
 }
 

@@ -44,6 +44,8 @@ export async function updateProfile(formData: FormData) {
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),
       resumeUrl: String(formData.get("resumeUrl") ?? "") || null,
+      contactHeadline: String(formData.get("contactHeadline") ?? "") || null,
+      contactMessage: String(formData.get("contactMessage") ?? "") || null,
       socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")) as unknown as Prisma.InputJsonValue,
     },
     create: {
@@ -55,6 +57,8 @@ export async function updateProfile(formData: FormData) {
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),
       resumeUrl: String(formData.get("resumeUrl") ?? "") || null,
+      contactHeadline: String(formData.get("contactHeadline") ?? "") || null,
+      contactMessage: String(formData.get("contactMessage") ?? "") || null,
       socialLinks: parseSocialLinks(String(formData.get("socialLinks") ?? "")) as unknown as Prisma.InputJsonValue,
     },
   });

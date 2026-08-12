@@ -6,7 +6,7 @@ export function Experience({ experience }: { experience: ExperienceEntry[] }) {
 
   return (
     <section id="experience" className="mx-auto max-w-4xl px-6 py-16">
-      <SectionHeading number="04" title="Experience" />
+      <SectionHeading number="03" title="Experience" />
       <ol className="space-y-8 border-l border-border pl-6">
         {sorted.map((entry) => (
           <li key={entry.id} className="relative">

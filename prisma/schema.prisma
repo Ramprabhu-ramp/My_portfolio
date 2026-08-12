@@ -10,16 +10,18 @@ datasource db {
 
 // Singleton row (id is always 1) holding the "About" section content.
 model Profile {
-  id          Int      @id @default(1)
-  name        String
-  tagline     String
-  photoUrl    String?
-  bio         String[]
-  location    String
-  email       String
-  resumeUrl   String?
-  socialLinks Json     @default("[]")
-  updatedAt   DateTime @updatedAt
+  id              Int      @id @default(1)
+  name            String
+  tagline         String
+  photoUrl        String?
+  bio             String[]
+  location        String
+  email           String
+  resumeUrl       String?
+  contactHeadline String?
+  contactMessage  String?
+  socialLinks     Json     @default("[]")
+  updatedAt       DateTime @updatedAt
 }
 
 model SkillGroup {

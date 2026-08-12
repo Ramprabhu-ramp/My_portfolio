@@ -48,7 +48,26 @@ export default async function ProfileAdminPage() {
           label="Resume URL (optional)"
           name="resumeUrl"
           defaultValue={profile?.resumeUrl ?? ""}
+          hint="A link to your resume/CV (PDF). The hero's “Download resume” button is hidden if this is blank."
         />
+        <Field
+          label="Contact headline"
+          name="contactHeadline"
+          defaultValue={profile?.contactHeadline ?? ""}
+          hint="Big headline in the Contact section, e.g. “Got a challenge worth solving? Let's talk.”"
+        />
+        <div>
+          <label className="block text-sm font-medium">Contact message</label>
+          <p className="mb-1.5 text-xs text-muted">
+            Short paragraph under the contact headline.
+          </p>
+          <textarea
+            name="contactMessage"
+            rows={3}
+            defaultValue={profile?.contactMessage ?? ""}
+            className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-accent"
+          />
+        </div>
         <div>
           <label className="block text-sm font-medium">Social links</label>
           <p className="mb-1.5 text-xs text-muted">

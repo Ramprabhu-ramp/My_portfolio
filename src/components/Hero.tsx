@@ -37,17 +37,21 @@ export function Hero({ profile }: { profile: Profile }) {
       </div>
       <div className="mt-8 flex flex-wrap gap-4">
         <a
-          href="#projects"
+          href="#contact"
           className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
-          View my work
+          Contact me
         </a>
-        <a
-          href="#contact"
-          className="rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-surface"
-        >
-          Get in touch
-        </a>
+        {profile.resumeUrl && (
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-surface"
+          >
+            Download resume
+          </a>
+        )}
       </div>
     </section>
   );

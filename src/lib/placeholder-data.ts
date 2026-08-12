@@ -16,6 +16,9 @@ export const placeholderContent: PortfolioContent = {
     location: "Your City, Country",
     email: "you@example.com",
     resumeUrl: "",
+    contactHeadline: "Got a challenge worth solving? Let's talk.",
+    contactMessage:
+      "I'm open to freelance work and new opportunities across the full stack. If you've got something interesting, I'd love to hear about it.",
     socialLinks: [
       { label: "GitHub", url: "https://github.com/yourhandle" },
       { label: "LinkedIn", url: "https://linkedin.com/in/yourhandle" },
