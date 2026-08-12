@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+// Singleton row (id is always 1) holding the "About" section content.
+model Profile {
+  id          Int      @id @default(1)
+  name        String
+  tagline     String
+  bio         String[]
+  location    String
+  email       String
+  resumeUrl   String?
+  socialLinks Json     @default("[]")
+  updatedAt   DateTime @updatedAt
+}
+
+model SkillGroup {
+  id     String   @id @default(cuid())
+  title  String
+  skills String[]
+  order  Int      @default(0)
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  tags        String[]
+  liveUrl     String?
+  repoUrl     String?
+  imageUrl    String?
+  featured    Boolean  @default(true)
+  order       Int      @default(0)
+}
+
+model ExperienceEntry {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  startDate   String
+  endDate     String
+  description String
+  tags        String[]
+  order       Int      @default(0)
+}
