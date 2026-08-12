@@ -22,6 +22,7 @@ export async function getContent(): Promise<PortfolioContent> {
     profile: {
       name: profile.name,
       tagline: profile.tagline,
+      photoUrl: profile.photoUrl ?? undefined,
       bio: profile.bio,
       location: profile.location,
       email: profile.email,

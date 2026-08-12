@@ -39,6 +39,7 @@ export async function updateProfile(formData: FormData) {
     update: {
       name: String(formData.get("name") ?? ""),
       tagline: String(formData.get("tagline") ?? ""),
+      photoUrl: String(formData.get("photoUrl") ?? "") || null,
       bio,
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),
@@ -49,6 +50,7 @@ export async function updateProfile(formData: FormData) {
       id: 1,
       name: String(formData.get("name") ?? ""),
       tagline: String(formData.get("tagline") ?? ""),
+      photoUrl: String(formData.get("photoUrl") ?? "") || null,
       bio,
       location: String(formData.get("location") ?? ""),
       email: String(formData.get("email") ?? ""),

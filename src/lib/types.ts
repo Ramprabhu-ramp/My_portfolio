@@ -15,7 +15,8 @@ export interface SocialLink {
 export interface Profile {
   name: string;
   tagline: string;
-  bio: string[]; // one entry per paragraph
+  photoUrl?: string;
+  bio: string[]; // one entry per paragraph, shown in the About section
   location: string;
   email: string;
   resumeUrl?: string;

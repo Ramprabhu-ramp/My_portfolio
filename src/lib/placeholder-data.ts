@@ -8,6 +8,7 @@ export const placeholderContent: PortfolioContent = {
   profile: {
     name: "Your Name",
     tagline: "I'm a Frontend & Full-Stack Developer.",
+    photoUrl: "",
     bio: [
       "I build user-centered web applications, focusing on clean interfaces and reliable, maintainable code.",
       "Over the past few years I've worked across the stack — from pixel-level UI details to the APIs and databases behind them — with a focus on React, TypeScript, and modern web tooling.",

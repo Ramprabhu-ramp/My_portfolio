@@ -22,12 +22,18 @@ export default async function ProfileAdminPage() {
           name="tagline"
           defaultValue={profile?.tagline}
           required
-          hint="Shown as the big headline on the homepage."
+          hint="A short one-line subheading under your name, e.g. “Frontend & Full-Stack Developer”. Keep it brief — it's shown right below your name in the hero."
+        />
+        <Field
+          label="Photo URL (optional)"
+          name="photoUrl"
+          defaultValue={profile?.photoUrl ?? ""}
+          hint="A link to a photo of you (e.g. from GitHub, LinkedIn, or any image host). Leave blank to show your initials instead."
         />
         <div>
           <label className="block text-sm font-medium">Bio</label>
           <p className="mb-1.5 text-xs text-muted">
-            Separate paragraphs with a blank line. The first paragraph also appears in the hero.
+            Separate paragraphs with a blank line. Shown in the About section only (not repeated in the hero).
           </p>
           <textarea
             name="bio"
