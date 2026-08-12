@@ -71,7 +71,9 @@ export default async function ProfileAdminPage() {
         <div>
           <label className="block text-sm font-medium">Social links</label>
           <p className="mb-1.5 text-xs text-muted">
-            One per line, format: <code>Label | https://url</code>
+            One per line. Just paste a URL (e.g. <code>github.com/yourhandle</code>) and the
+            label is guessed automatically — or write <code>Label | https://url</code> to set
+            your own label.
           </p>
           <textarea
             name="socialLinks"

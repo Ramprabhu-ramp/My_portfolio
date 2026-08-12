@@ -16,14 +16,36 @@ function revalidateAll() {
 
 // ---------- Profile ----------
 
+function guessLabel(url: string): string {
+  const lower = url.toLowerCase();
+  if (lower.includes("github.com")) return "GitHub";
+  if (lower.includes("linkedin.com")) return "LinkedIn";
+  if (lower.includes("twitter.com") || lower.includes("x.com")) return "Twitter";
+  if (lower.includes("instagram.com")) return "Instagram";
+  return "Link";
+}
+
+function normalizeUrl(url: string): string {
+  if (!url) return "";
+  return /^https?:\/\//i.test(url) ? url : `https://${url}`;
+}
+
+// Accepts either "Label | url" per line, or just a bare url per line (in
+// which case the label is guessed from the domain — github.com -> "GitHub",
+// etc.) so pasting plain links works without needing to remember a format.
 function parseSocialLinks(raw: string): SocialLink[] {
   return raw
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
-      const [label, ...rest] = line.split("|").map((s) => s.trim());
-      return { label: label || "Link", url: rest.join("|") || "" };
+      if (line.includes("|")) {
+        const [label, ...rest] = line.split("|").map((s) => s.trim());
+        const url = normalizeUrl(rest.join("|"));
+        return { label: label || guessLabel(url), url };
+      }
+      const url = normalizeUrl(line);
+      return { label: guessLabel(url), url };
     })
     .filter((link) => link.url);
 }
